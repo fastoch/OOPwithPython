@@ -1,5 +1,9 @@
 # Create a class
 class Item:
+    # __init__ constructor
+    def __init__(self):
+        print("I am an item object!")
+    # basic method
     def calculateTotalPrice(self, x, y):
         return x * y
 
