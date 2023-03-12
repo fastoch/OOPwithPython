@@ -2,13 +2,14 @@
 class Item:
     # __init__ constructor
     def __init__(self):
-        print("I am an item object!")
+        print("I am a new item!")
     # basic method
     def calculateTotalPrice(self, x, y):
         return x * y
 
 # class instantiation (= object creation)
 item1 = Item()
+item2 = Item()
 
 # Create some attributes for our object
 item1.name = "Phone"
