@@ -4,7 +4,10 @@
 
 class Item:
     def __init__(self, name, price, quantity):
-        print(f"A new instance of Item named \"{name}\" has been created.")
+        self.name = name
+        self.price = price
+        self.quantity = quantity
+        print(f"A new instance of Item named \"{name}\" has been created.") # this is an f-strin, or formatted string
         print(f"This item costs {price}€/unit.")
         print(f"I want to buy {quantity} units of this item.")
         print(f"This will cost me {price*quantity}€.\n")
@@ -13,3 +16,7 @@ class Item:
 
 item1 = Item("banana", 2, 12)
 item2 = Item("strawberry", 8, 50)
+
+# These 2 lines will induce an AttributeError if I forget to declare my attributes in __init__ (self.attributeName)
+print(item1.name)
+print(item2.name)
