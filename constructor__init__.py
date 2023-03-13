@@ -39,4 +39,3 @@ class Item2:
 # Assigning attributes outside of the constructor (__init__)
 item1.is_yellow = True
 item2.is_yellow = False
-
