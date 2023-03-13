@@ -4,18 +4,23 @@
 
 class Item:
     def __init__(self, name, price, quantity): # This block is what we call a constructor
+    # By adding parameters without setting a default value, I make these parameters mandatory for each instatiation of the class
         self.name = name
         self.price = price
         self.quantity = quantity
-        print(f"A new instance of Item named \"{name}\" has been created.") # this is an f-strin, or formatted string
+        print(f"A new instance of Item named \"{name}\" has been created.") # this is an f-string, or formatted string
         print(f"This item costs {price}€/unit.")
         print(f"I want to buy {quantity} units of this item.")
         print(f"This will cost me {price*quantity}€.\n")
-        
-# By adding parameter to my __init__ method, I make these parameters mandatory for each instatiation of the class
 
+    def calculateTotalPrice(self):
+        return self.price * self.quantity
+        
 item1 = Item("banana", 2, 12)
 item2 = Item("strawberry", 8, 50)
+
+print(f"{item1.calculateTotalPrice()}€")
+print(f"{item2.calculateTotalPrice()}€")
 
 # The following lines will induce an AttributeError if I forget to declare my attributes in __init__ (self.attributeName)
 print(item1.name)
@@ -30,3 +35,8 @@ class Item2:
         self.price = price
         self.quantity = quantity
 # By setting a default value for the parameter quantity, I make it a non-mandatory parameter
+
+# Assigning attributes outside of the constructor (__init__)
+item1.is_yellow = True
+item2.is_yellow = False
+
