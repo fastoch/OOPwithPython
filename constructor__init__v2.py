@@ -17,3 +17,7 @@ item1 = Item("honeypot", 12.0, 4)
 
 print(f"{item1.totalPrice()}€")
 print(item1.name)
+
+# So far, we worked with "instance attributes"
+# There is another kind of attributes that we call "Class Attributes"
+# A Class Attribute is an attribute to belong to the class itself, but can also be accessed from the instance level
