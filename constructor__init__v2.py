@@ -18,20 +18,27 @@ class Item:
         # appending instances of our class (objects) to the list
         Item.all.append(self)
 
-    # Method
+    # Methods
     def totalPrice(self):
         return self.price * self.quantity
     
     def applyDiscount(self):
         self.price = self.price * self.pay_rate # applying 20% discount
         self.price = round(self.price, 2) # rounding down to 2 decimals
-
+    
+    # Magic built-in method returning a string that represents the object
+    def __repr__(self):
+        return f"Item('{self.name}', {self.price}, {self.quantity})" 
+        # name is a string, so we use single quotes to escape surrounding double quotes
 
 item1 = Item("honeypot", 12.0, 4)
 item2 = Item("Pepper", 3.5, 5)
 item3 = Item("Apple", 0.3, 12)
 item4 = Item("Pasta", 1.5, 8)
 item5 = Item("Tomato", 0.8, 10)
+
+print(Item.all)
+print()
 
 # check if all instances have been added to our list
 for instance in Item.all:
