@@ -1,6 +1,10 @@
 # When invoking a method, you might use wrong data type (for ex, string instead of integer)
 # To prevent this, we have to validate the data types of the values that are passed in
 class Item:
+    # Class Attributes 
+    pay_rate = 0.8 # The pay rate after 20% discount
+
+    # Constructor
     def __init__(self, name:str, price:float, quantity=0): # no need to specify the data type because default value is an integer
         self.name = name
         self.price = price
@@ -10,9 +14,11 @@ class Item:
         assert price >= 0, f"Price {price} is not greater than or equal to zero!"
         assert quantity >= 0, f"Quantity {quantity} is not greater than or equal to zero!"
 
+    # Method
     def totalPrice(self):
         return self.price * self.quantity
     
+
 item1 = Item("honeypot", 12.0, 4)
 
 print(f"{item1.totalPrice()}€")
@@ -20,4 +26,7 @@ print(item1.name)
 
 # So far, we worked with "instance attributes"
 # There is another kind of attributes that we call "Class Attributes"
-# A Class Attribute is an attribute to belong to the class itself, but can also be accessed from the instance level
+# A Class Attribute is an attribute which belongs to the class itself, but can also be accessed from the instance level
+
+print(Item.pay_rate) # accessing from the class level
+print(item1.pay_rate) # accessing from the instance level
