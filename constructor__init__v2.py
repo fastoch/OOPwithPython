@@ -1,3 +1,5 @@
+import csv
+
 # When invoking a method, you might use wrong data type (for ex, string instead of integer)
 # To prevent this, we have to validate the data types of the values that are passed in
 class Item:
@@ -29,13 +31,32 @@ class Item:
     # Magic built-in method which formats the list Item.all (improves readability)
     def __repr__(self):
         return f"Item({self.name}, {self.price}, {self.quantity})" 
+    
+    @classmethod # make instantiate_from_csv a class method
+    def instantiate_from_csv(cls):
+        with open('items.csv', 'r') as f:   # opens items.csv in read mode and alias it as 'f'
+            reader = csv.DictReader(f)      # each line in the file becomes a new entry in a dictionary
+            items = list(reader)            # turn the dictionary into a list of items
+
+        for item in items:
+            print(item)
+            Item(
+                name = item.get('name'),
+                price = int(item.get('price')),
+                quantity = int(item.get('quantity')),
+            )
+            
+# class methods can be applied to the class, while other methods can only be applied to instances of the class
 
 # I commented out those lines because I'm using a .csv file to create new objects (new instances of the class "Item")
-    # item1 = Item("honeypot", 12.0, 4)
-    # item2 = Item("Pepper", 3.5, 5)
+    # Phone = Item("honeypot", 12.0, 4)
+    # Laptop = Item("Pepper", 3.5, 5)
     # item3 = Item("Apple", 0.3, 12)
     # item4 = Item("Pasta", 1.5, 8)
     # item5 = Item("Tomato", 0.8, 10)
+
+Item.instantiate_from_csv()
+print()
 
 print(Item.all)
 print()
@@ -44,26 +65,22 @@ print()
 for instance in Item.all:
     print(instance.name) 
 
-item1.applyDiscount()
-print(f"\nItem1: {item1.name}")
-print(f"Item1 pay rate: {item1.pay_rate}")
-print(f"Discount unit price: {item1.price}€")
-print(f"Discount Total price: {item1.totalPrice()}€")
+Item.all[0].applyDiscount()
+print(f"\nPhone: {Item.all[0].name}")
+print(f"Phone pay rate: {Item.all[0].pay_rate}")
+print(f"Discount unit price: {Item.all[0].price}€")
+print(f"Discount Total price: {Item.all[0].totalPrice()}€")
 print()
 
 # So far, we worked with "instance attributes"
 # There is another kind of attributes that we call "Class Attributes"
 # A Class Attribute is an attribute which belongs to the class itself, but can also be accessed from the instance level
 
-print(f"Item pay_rate (class level): {Item.pay_rate}") # accessing attribute from the class level
-print(f"item1 pay_rate (instance level): {item1.pay_rate}") # accessing attribute from the instance level
-print()
-
 # Using a built-in magic attribute that displays all attributes belonging to a class|object
 print("Attributes belonging to the Item class:")
 print(Item.__dict__)
-print("\nAttributes belonging to the item1 object:")
-print(item1.__dict__)
+print("\nAttributes belonging to the Phone object:")
+print(Item.all[0].__dict__)
 
 
 # just testing the round() function
@@ -73,10 +90,8 @@ print(f"Round 25.638562 down to 2 decimals: {round(25.638562, 2)}\n")
 
 
 # customizing pay rate for a specific instance
-item2 = Item("Pepper", 3.5, 5)
-print(f"Item2: {item2.name}")
-item2.pay_rate = 0.6 # instance attribute
-print(f"Item2 pay rate: {item2.pay_rate}")
-item2.applyDiscount()
-print(f"Discount unit price: {item2.price}€")
-print(f"Discount Total price: {item2.totalPrice()}€")
+Item.all[1].pay_rate = 0.6
+print(f"Laptop pay rate: {Item.all[1].pay_rate}")
+Item.all[1].applyDiscount()
+print(f"Discount unit price: {Item.all[1].price}€")
+print(f"Discount Total price: {Item.all[1].totalPrice()}€")

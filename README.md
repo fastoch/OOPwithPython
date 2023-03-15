@@ -1,3 +1,3 @@
 Object Oriented Programming with Python  
 https://www.youtube.com/watch?v=Ej_02ICOIgs  
-@54:00
+@1:02:00
