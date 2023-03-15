@@ -15,7 +15,7 @@ class Item:
         assert price >= 0, f"Price {price} is not greater than or equal to zero!"
         assert quantity >= 0, f"Quantity {quantity} is not greater than or equal to zero!"
 
-        # appending instances of our class (objects) to the list
+        # appending each new instance of our class to the list named "all"
         Item.all.append(self)
 
     # Methods
@@ -26,16 +26,16 @@ class Item:
         self.price = self.price * self.pay_rate # applying 20% discount
         self.price = round(self.price, 2) # rounding down to 2 decimals
     
-    # Magic built-in method returning a string that represents the object
+    # Magic built-in method which formats the list Item.all (improves readability)
     def __repr__(self):
-        return f"Item('{self.name}', {self.price}, {self.quantity})" 
-        # name is a string, so we use single quotes to escape surrounding double quotes
+        return f"Item({self.name}, {self.price}, {self.quantity})" 
 
-item1 = Item("honeypot", 12.0, 4)
-item2 = Item("Pepper", 3.5, 5)
-item3 = Item("Apple", 0.3, 12)
-item4 = Item("Pasta", 1.5, 8)
-item5 = Item("Tomato", 0.8, 10)
+# I commented out those lines because I'm using a .csv file to create new objects (new instances of the class "Item")
+    # item1 = Item("honeypot", 12.0, 4)
+    # item2 = Item("Pepper", 3.5, 5)
+    # item3 = Item("Apple", 0.3, 12)
+    # item4 = Item("Pasta", 1.5, 8)
+    # item5 = Item("Tomato", 0.8, 10)
 
 print(Item.all)
 print()
