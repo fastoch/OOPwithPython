@@ -1,3 +1,55 @@
 # In 'constructor__init__v2.py', we saw class methods with an example called 'instantiate_from_csv()'
 # Now, we will talk about static methods
 
+import csv
+
+class Item:
+    pay_rate = 0.8 
+    
+    # Constructor
+    def __init__(self, name:str, price:float, quantity=0):
+        self.name = name
+        self.price = price
+        self.quantity = quantity
+        
+        assert price >= 0, f"Price {price} is not greater than or equal to zero!"
+        assert quantity >= 0, f"Quantity {quantity} is not greater than or equal to zero!"
+
+        Item.all.append(self)
+
+    # Methods
+    def totalPrice(self):
+        return self.price * self.quantity
+    
+    def applyDiscount(self):
+        self.price = self.price * self.pay_rate 
+        self.price = round(self.price, 2) 
+    
+    # Magic built-in method which formats the list Item.all (improves readability)
+    def __repr__(self):
+        return f"Item({self.name}, {self.price}, {self.quantity})" 
+    
+    # class methods can be applied to a class, while other methods can only be applied to instances of a class
+    @classmethod 
+    def instantiate_from_csv(cls):
+        with open('items.csv', 'r') as f:   # opens items.csv in read mode and alias it as 'f'
+            reader = csv.DictReader(f)      # each line in the file becomes a new entry in a dictionary
+            items = list(reader)            # turn the dictionary into a list of items
+
+        for item in items:
+            print(item)
+            Item(
+                name = item.get('name'),
+                price = float(item.get('price')),
+                quantity = int(item.get('quantity')),
+            )
+
+    @staticmethod
+    def is_integer(num):
+        # we count out the floats that are point zero (5.0, 10.0, etc.)
+        if isinstance(num, float):      # if num is a float (floating point number)
+            return num.is_integer()     # return False
+
+
+Item.instantiate_from_csv()
+print()

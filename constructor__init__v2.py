@@ -33,7 +33,7 @@ class Item:
         return f"Item({self.name}, {self.price}, {self.quantity})" 
     
     @classmethod # makes instantiate_from_csv a class method
-    def instantiate_from_csv(cls):
+    def instantiate_from_csv(cls):          # self is replaced by cls, because this method applies to a class, not to its instances
         with open('items.csv', 'r') as f:   # opens items.csv in read mode and alias it as 'f'
             reader = csv.DictReader(f)      # each line in the file becomes a new entry in a dictionary
             items = list(reader)            # turn the dictionary into a list of items
