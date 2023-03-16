@@ -32,7 +32,7 @@ class Item:
     def __repr__(self):
         return f"Item({self.name}, {self.price}, {self.quantity})" 
     
-    @classmethod # make instantiate_from_csv a class method
+    @classmethod # makes instantiate_from_csv a class method
     def instantiate_from_csv(cls):
         with open('items.csv', 'r') as f:   # opens items.csv in read mode and alias it as 'f'
             reader = csv.DictReader(f)      # each line in the file becomes a new entry in a dictionary
@@ -42,8 +42,8 @@ class Item:
             print(item)
             Item(
                 name = item.get('name'),
-                price = int(item.get('price')),
-                quantity = int(item.get('quantity')),
+                price = float(item.get('price')),         # prices are passed as strings and must be floats to be >= 0
+                quantity = int(item.get('quantity')),   # quantities are passed as strings and must be integers to be >= 0
             )
             
 # class methods can be applied to the class, while other methods can only be applied to instances of the class
