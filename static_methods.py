@@ -5,6 +5,7 @@ import csv
 
 class Item:
     pay_rate = 0.8 
+    all = []
     
     # Constructor
     def __init__(self, name:str, price:float, quantity=0):
@@ -55,5 +56,12 @@ class Item:
             return False
 
 
-Item.instantiate_from_csv()
+Item.instantiate_from_csv()     # Displays items contained in my items.csv file
 print()
+print(Item.check_integer(12))   # True
+print(Item.check_integer(12.0)) # True
+print(Item.check_integer(12.5)) # False
+
+# When to use class methods and when to use static methods ?
+    # We use a static method when want to do something that should not be instance-specific (object-specific)
+    # We use a class method for instantiating objects from some structured data like a .csv file
