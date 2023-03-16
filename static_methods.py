@@ -1,5 +1,5 @@
-# In 'constructor__init__v2.py', we saw class methods with an example called 'instantiate_from_csv()'
-# Now, we will talk about static methods
+# In 'constructor__init__v2.py', we saw an example of a class method with instantiate_from_csv()
+# Now, we will see an example of a static method with check_integer()
 
 import csv
 
@@ -45,10 +45,14 @@ class Item:
             )
 
     @staticmethod
-    def is_integer(num):
-        # we count out the floats that are point zero (5.0, 10.0, etc.)
+    def check_integer(num):
+        # we count out the floats that are point zero (5.0, 10.0, 7.0, ...)
         if isinstance(num, float):      # if num is a float (floating point number)
-            return num.is_integer()     # return False
+            return num.is_integer()     # built-in function that returns True for 7.0 and False for 7.3
+        elif isinstance(num, int):
+            return True
+        else:
+            return False
 
 
 Item.instantiate_from_csv()
