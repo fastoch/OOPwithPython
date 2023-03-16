@@ -30,7 +30,6 @@ class Item:
     def __repr__(self):
         return f"Item({self.name}, {self.price}, {self.quantity})" 
     
-    # class methods can be applied to a class, while other methods can only be applied to instances of a class
     @classmethod 
     def instantiate_from_csv(cls):
         with open('items.csv', 'r') as f:   # opens items.csv in read mode and alias it as 'f'
