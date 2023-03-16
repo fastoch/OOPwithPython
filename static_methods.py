@@ -65,3 +65,8 @@ print(Item.check_integer(12.5)) # False
 # When to use class methods and when to use static methods ?
     # We use a static method when want to do something that should not be instance-specific (object-specific)
     # We use a class method for instantiating objects from some structured data like a .csv file
+
+# regular methods pass the object (self) as the first argument
+
+# class methods pass the class (cls) as the first argument
+# static methods DO NOT pass the object reference (self) as the first argument 
