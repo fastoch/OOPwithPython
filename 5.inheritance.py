@@ -1,5 +1,6 @@
 import csv
 
+# The code below has been minimized on purpose
 class Item:
     pay_rate = 0.8 
     all = []
@@ -44,9 +45,23 @@ class Item:
         elif isinstance(num, int):
             return True
         else:
-            return False
-        
-phone1 = Item("jscPhonev10", 500, 5)
+            return False        
+
+
+### The code below is what will be focusing on ###
+
+# We want to create a method that calculates the number of phones that are not broken (quantity - broken phones)
+# This method will not be useful for any instance of the Item class, because it only applies to phones
+# To solve this, we can create a separated class that will inherit the functionalities of the Item class
+
+# The Phone class will inherit all the attributes and methods from the Item class
+class Phone(Item):
+    pass
+
+phone1 = Phone("Moto_v10", 500, 5)
 phone1.broken_phones = 1
-phone2 = Item("jscPhonev20, 700, 5")
+phone2 = Phone("Moto_v20", 700, 5)
 phone2.broken_phones = 1
+
+# Phone is the child class of Item
+# Item is the parent class of Phone

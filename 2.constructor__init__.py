@@ -1,6 +1,6 @@
-# In my file firstClass.py, I had to declare attributes each time I wanted to instantiate a new object
+# In my file "1.firstClass.py", I had to declare attributes each time I wanted to instantiate a new object
 # What if I don't want to hard-code these attributes for each instantiation of our class ?
-# I should declare these attributes in the class definition
+# It is best practice to declare these attributes in the class definition
 
 class Item:
     def __init__(self, name, price, quantity): # This block is what we call a constructor
