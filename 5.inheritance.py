@@ -56,12 +56,19 @@ class Item:
 
 # The Phone class will inherit all the attributes and methods from the Item class
 class Phone(Item):
-    pass
+    # At first, we copy the constructor from the parent class (Item)
+    def __init__(self, name:str, price:float, quantity=0, broken_phones=0):
+        self.name = name
+        self.price = price
+        self.quantity = quantity
+        
+        assert price >= 0, f"Price {price} is not greater than or equal to zero!"
+        assert quantity >= 0, f"Quantity {quantity} is not greater than or equal to zero!"
+
+        Item.all.append(self)
 
 phone1 = Phone("Moto_v10", 500, 5)
-phone1.broken_phones = 1
 phone2 = Phone("Moto_v20", 700, 5)
-phone2.broken_phones = 1
 
 # Phone is the child class of Item
 # Item is the parent class of Phone
