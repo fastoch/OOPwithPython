@@ -16,7 +16,8 @@ class Item:
         Item.all.append(self)
 
     def totalPrice(self):
-        return self.price * self.quantity
+        total = self.price * self.quantity
+        return f"Total price is: {total}€"
     
     def applyDiscount(self):
         self.price = self.price * self.pay_rate 
@@ -56,19 +57,31 @@ class Item:
 
 # The Phone class will inherit all the attributes and methods from the Item class
 class Phone(Item):
-    # At first, we copy the constructor from the parent class (Item)
+    all = []
     def __init__(self, name:str, price:float, quantity=0, broken_phones=0):
-        self.name = name
-        self.price = price
-        self.quantity = quantity
-        
-        assert price >= 0, f"Price {price} is not greater than or equal to zero!"
-        assert quantity >= 0, f"Quantity {quantity} is not greater than or equal to zero!"
+        # Call to super function to get access to all attributes and methods from the parent class
+        super().__init__(
+            name, price, quantity
+        )
 
-        Item.all.append(self)
+        # Run validations to the received arguments
+        assert broken_phones >= 0, f"Broken_Phones {broken_phones} is not greater than or equal to zero!"
+
+        # Assign to self object
+        self.broken_phones = broken_phones
+
+        # Actions to execute
+        Phone.all.append(self)
 
 phone1 = Phone("Moto_v10", 500, 5)
-phone2 = Phone("Moto_v20", 700, 5)
+phone2 = Phone("Moto_v20", 700, 8)
+
+# using a method declared in the parent class (Item)
+print(phone1.totalPrice())
+print(phone2.totalPrice()) 
 
 # Phone is the child class of Item
 # Item is the parent class of Phone
+
+# when declaring a child class, we don't have to copy the entirety of the constructor (__init__)
+# instead, we can use the 'super' function
