@@ -33,7 +33,6 @@ class Item:
             reader = csv.DictReader(f)      
             items = list(reader)            
         for item in items:
-            print(item)
             Item(
                 name = item.get('name'),
                 price = float(item.get('price')),
