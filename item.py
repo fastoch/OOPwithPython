@@ -47,3 +47,7 @@ class Item:
             return True
         else:
             return False
+    
+    @property
+    def read_only_name(self):
+        return "AAA"

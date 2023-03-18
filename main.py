@@ -8,3 +8,7 @@ item1 = Item("MyItem", 750)     # I don't specify quantity because we have a def
 item1.name = "OtherItem"
 
 print(item1.name)
+
+# Read-Only Attributes are declared in the class (item.py --> @property)
+print(item1.read_only_name)
+item1.read_only_name = "BBB"    # AttributeError: property 'read_only_name' of 'Item' object has no setter
