@@ -59,7 +59,7 @@ class Item:
 class Phone(Item):
     all = []
     def __init__(self, name:str, price:float, quantity=0, broken_phones=0):
-        # Call to super function to get access to all attributes and methods from the parent class
+        # Call to super function to inherit all attributes and methods from the parent class
         super().__init__(
             name, price, quantity
         )
