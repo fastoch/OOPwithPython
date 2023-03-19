@@ -22,3 +22,7 @@ print()
 item2.name = "De Blob"  # Setting an attribute
 print(item2.name)       # Getting an attribute
 
+item3 = Item("LongName", 82)
+print(item3.name)
+item3.name = "TooLongName"
+print(item3.name) 

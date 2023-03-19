@@ -23,6 +23,8 @@ class Item:
     @name.setter    # allows name modification
     def name(self, new_value):
         print("You're trying to set a new name")
+        if len(new_value) > 10:     # restrict the length of the name
+            raise Exception("Name length can't exceed 10 characters.")
         self.__name = new_value
 
     def totalPrice(self):
