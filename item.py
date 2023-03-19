@@ -6,7 +6,7 @@ class Item:
     all = []
     
     def __init__(self, name:str, price:float, quantity=0):
-        self.name = name
+        self.__name = name          # __name is a private attribute, not accessible from outside of the class
         self.price = price
         self.quantity = quantity
         
@@ -14,6 +14,14 @@ class Item:
         assert quantity >= 0, f"Quantity {quantity} is not greater than or equal to zero!"
 
         Item.all.append(self)
+
+    @property   # Property decorator = read-only attribute
+    def name(self):
+        return self.__name
+    
+    @name.setter
+    def name(self, new_value):
+        self.__name = new_value
 
     def totalPrice(self):
         total = self.price * self.quantity
@@ -48,6 +56,8 @@ class Item:
         else:
             return False
     
-    @property
-    def read_only_name(self):
-        return "AAA"
+    # @property
+    # def read_only_name(self):
+    #     return "AAA"
+
+    ## To prevent access to an attribute outside of the class, you must use __attributeName (double underscore) ##

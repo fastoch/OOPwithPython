@@ -5,10 +5,17 @@ Item.instantiate_from_csv()
 print(Item.all)                 # checking if instantiation from .csv file actually worked
 
 item1 = Item("MyItem", 750)     # I don't specify quantity because we have a default value of 0
-item1.name = "OtherItem"
-
 print(item1.name)
 
-# Read-Only Attributes are declared in the class (item.py --> @property)
-print(item1.read_only_name)
-item1.read_only_name = "BBB"    # AttributeError: property 'read_only_name' of 'Item' object has no setter
+item2 = Item("Blob", 333)
+print(item2.name) 
+
+# Now that we made the name a read-only attribute (@property), how to set a new value for it ?
+# answer in item.py, lines 22 to 24, @name.setter
+item1.name = "OtherItem"
+print(item1.name)
+
+item2.name = "De Blob"
+print(item2.name) 
+
+
