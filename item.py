@@ -6,7 +6,7 @@ class Item:
     all = []
     
     def __init__(self, name:str, price:float, quantity=0):
-        self.__name = name          # __name is a private attribute, not accessible from outside of the class
+        self.__name = name          # __name is a private attribute, not accessible from outside the class
         self.price = price
         self.quantity = quantity
         
@@ -17,10 +17,12 @@ class Item:
 
     @property   # Property decorator = read-only attribute
     def name(self):
+        print("You're trying to get the current name")  # display a message every time we try to access the name attribute
         return self.__name
     
-    @name.setter
+    @name.setter    # allows name modification
     def name(self, new_value):
+        print("You're trying to set a new name")
         self.__name = new_value
 
     def totalPrice(self):
@@ -37,14 +39,14 @@ class Item:
     
     @classmethod 
     def instantiate_from_csv(cls):
-        with open('items.csv', 'r') as f:  
-            reader = csv.DictReader(f)      
-            items = list(reader)            
+        with open('items.csv', 'r') as f:   # opens items.csv in read mode and give the name 'f' to the file handler
+            reader = csv.DictReader(f)      # access items.csv and make a dictionary out of it
+            items = list(reader)            # turns the dictionary into a list of items
         for item in items:
             Item(
-                name = item.get('name'),
-                price = float(item.get('price')),
-                quantity = int(item.get('quantity')),
+                name = item.get('name'),                # get the value in the column 'name' and assign it to the name attribute
+                price = float(item.get('price')),       # same thing with a type conversion (from string to floating point number)
+                quantity = int(item.get('quantity')),   # same thing but converting from string to integer
             )
 
     @staticmethod
