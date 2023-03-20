@@ -6,14 +6,32 @@ class Item:
     all = []
     
     def __init__(self, name:str, price:float, quantity=0):
-        self.__name = name          # __name is a private attribute, not accessible from outside the class
-        self.price = price
+        self.__name = name          # name is a private attribute, not accessible from outside the class
+        self.__price = price
         self.quantity = quantity
         
         assert price >= 0, f"Price {price} is not greater than or equal to zero!"
         assert quantity >= 0, f"Quantity {quantity} is not greater than or equal to zero!"
 
         Item.all.append(self)
+
+    @property
+    def price(self):
+        return self.__price
+    
+    @price.setter
+    def price(self, new_price):
+        if new_price < 0:
+            raise Exception("Prices can't be negative!")
+        self.__price = new_price
+    
+    def applyDiscount(self):
+        self.__price = self.__price * self.pay_rate 
+        self.__price = round(self.__price, 2) 
+
+    def applyIncrease(self, increase_rate):
+        self.__price = self.__price *  (1 + increase_rate)
+        self.__price = round(self.__price, 2) 
 
     @property   # Property decorator = read-only attribute
     def name(self):
@@ -27,16 +45,12 @@ class Item:
             raise Exception("Name length can't exceed 10 characters.")
         self.__name = new_value
 
-    def totalPrice(self):
-        total = self.price * self.quantity
+    def total__Price(self):
+        total = self.__price * self.quantity
         return f"Total price is: {total}€"
     
-    def applyDiscount(self):
-        self.price = self.price * self.pay_rate 
-        self.price = round(self.price, 2) 
-    
     def __repr__(self):
-        return f"{self.__class__.__name__}({self.name}, {self.price}, {self.quantity})" 
+        return f"{self.__class__.__name__}({self.name}, {self.__price}, {self.quantity})" 
         # self.__class__.__name__ allows us to access the name of the class (to which belongs the instance)
     
     @classmethod 
