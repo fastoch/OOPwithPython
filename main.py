@@ -1,11 +1,12 @@
 # This file will be used to instantiate different classes (create new objects)
 from item import Item
+from phone import Phone
 
 Item.instantiate_from_csv()
 print(Item.all)                 # checking if instantiation from .csv file actually worked
 print()
 
-item1 = Item("MyItem", 750)     # I don't specify quantity because we have a default value of 0
+item1 = Item("MyItem", 750, 6)     # I don't specify quantity because we have a default value of 0
 print(item1.name)
 
 item2 = Item("Blob", 333)
@@ -32,3 +33,8 @@ item3 = Item("LongName", 82)
 print(item3.name)
 # item3.name = "TooLongName"
 # print(item3.name) 
+
+item1.send_email()  # I can access send_email(), but not private methods which are part of send_email()
+
+item4 = Phone("Zflip4", 700, 16)
+item4.send_email()

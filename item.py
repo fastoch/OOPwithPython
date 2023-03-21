@@ -52,6 +52,25 @@ class Item:
     def __repr__(self):
         return f"{self.__class__.__name__}({self.name}, {self.__price}, {self.quantity})" 
         # self.__class__.__name__ allows us to access the name of the class (to which belongs the instance)
+
+    # adding some dummy methods (sending emails requires some complexity)
+    def __connect(self, smtp_server):
+        pass
+
+    def __prepare_body(self):
+        return f"""
+        Hello, 
+        We have {self.name} {self.quantity} times.
+        Regards, 
+        Fabrice.
+        """
+    def __send(self):
+        pass
+
+    def send_email(self):   # abstraction = making methods private by adding a double underscore before their name
+        self.__connect()    # private methods can only be accessed|called from inside the class
+        self.__prepare_body()
+        self.__send()
     
     @classmethod 
     def instantiate_from_csv(cls):
