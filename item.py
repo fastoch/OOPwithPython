@@ -45,7 +45,7 @@ class Item:
             raise Exception("Name length can't exceed 10 characters.")
         self.__name = new_value
 
-    def total__Price(self):
+    def totalPrice(self):
         total = self.__price * self.quantity
         return f"Total price is: {total}€"
     
@@ -68,7 +68,7 @@ class Item:
         pass
 
     def send_email(self):   # abstraction = making methods private by adding a double underscore before their name
-        self.__connect()    # private methods can only be accessed|called from inside the class
+        self.__connect(None)    # private methods can only be accessed|called from inside the class
         self.__prepare_body()
         self.__send()
     

@@ -34,7 +34,9 @@ print(item3.name)
 # item3.name = "TooLongName"
 # print(item3.name) 
 
-item1.send_email()  # I can access send_email(), but not private methods which are part of send_email()
+item1.send_email()  # I can access send_email(), but not the private methods which are part of send_email()
 
 item4 = Phone("Zflip4", 700, 16)
+item4.applyIncrease(0.11)
+print(item4.price)
 item4.send_email()
