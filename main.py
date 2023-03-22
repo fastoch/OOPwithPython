@@ -1,6 +1,7 @@
 # This file will be used to instantiate different classes (create new objects)
 from item import Item
 from phone import Phone
+from keyboard import Keyboard
 
 Item.instantiate_from_csv()
 print(Item.all)                 # checking if instantiation from .csv file actually worked
@@ -39,4 +40,17 @@ item1.send_email()  # I can access send_email(), but not the private methods whi
 item4 = Phone("Zflip4", 700, 16)
 item4.applyIncrease(0.11)
 print(item4.price)
+item4.applyDiscount()
+print(item4.price)
 item4.send_email()
+
+# Polymorphism
+item4.name = "randomName"
+print(len(item4.name))  # 10 (10 characters)
+some_list = ["tata", "toto", "titi"]
+print(len(some_list))   # 3 (3 items in my list)
+
+item5 = Keyboard("Logitech", 80, 8)
+print(item5.name)
+item5.applyDiscount()
+print(item5.price)

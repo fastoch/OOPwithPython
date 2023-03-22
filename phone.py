@@ -2,8 +2,9 @@
 from item import Item   # import the Item class from the file item.py
 
 class Phone(Item):
+    pay_rate = 0.9
     def __init__(self, name:str, price:float, quantity=0, broken_phones=0):
-        # Call to super function to inheritk all attributes and methods from the parent class (Item)
+        # Call to super function to inherit all attributes and methods from the parent class (Item)
         super().__init__(           # This calls the __init__ method in the parent class
             name, price, quantity   # This imports attributes from the parent class (Item) to the child class (Phone)
         )
